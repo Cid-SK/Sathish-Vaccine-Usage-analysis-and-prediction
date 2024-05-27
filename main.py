@@ -3,7 +3,6 @@ import pandas as pd
 import pickle
 import plotly.express as px
 
-
 df=pd.read_csv("G:\\SK\\Ds\\vaccine\\en_vaccine.csv")
 
 #streamlit part
@@ -11,29 +10,93 @@ st.set_page_config(page_title="Vaccine Prediction",layout="wide")
 st.title("***:red[Vaccine Usage analysis and prediction]***")
 st.markdown("<style>div.block-container{padding-top:1rem;}</style>",unsafe_allow_html=True)
 
-tab1,tab2=st.tabs(["***Home***","***Prediction***"])
+tab1,tab2,tab3=st.tabs(["***Home***","***Analysis***","***Prediction***"])
 
 with tab1:
-       st.subheader(":blue[***Welcome to the Vaccine Usage Analysis and Prediction project homepage!***]")
-
-       st.write('''This project aims to predict the likelihood of people taking an H1N1 flu vaccine 
-                using machine learning techniques and provide valuable insights for healthcare
-                professionals and policymakers.''')
+       pass
        
-       st.write("""
+with tab2:     
+       data_df=pd.read_csv("G:\\SK\\Ds\\vaccine\\vaccine.csv")
+       data=data_df.copy()
 
-    ### :blue[***Project Tasks:***]
-                
-    - **Data Engineering**: Understand and preprocess the dataset.
-    - **Dashboard Development**: Create interactive visualizations.
-    - **Model Development**: Train a predictive model.
-    - **Model Serving API**: Develop an application for prediction.
+       data['h1n1_awareness'] = data['h1n1_awareness'].replace({0:"No knowledge",1:"little knowledge",2:"good knowledge"})
+       data['h1n1_vaccine'] = data['h1n1_vaccine'].replace({0:"Not Vaccinated",1:"Vaccinated"})
+       data['is_h1n1_risky']=data['is_h1n1_risky'].replace({1:"Thinks it is not very low risk", 2:"Thinks it is somewhat low risk", 3:"don’t know if it is risky or not", 4:"Thinks it is a somewhat high risk",5:"Thinks it is very highly risky"})
+       
+       st.subheader(":red[***Overview***]")
+       c1,c2=st.columns(2)
+       with c1:
+              with st.container(border=True):
+                     #Gender Distribution
+                     vaccine_distribution = data['h1n1_vaccine'].value_counts().reset_index()
+                     vaccine_distribution.columns = ['H1N1 Vaccine', 'Count']
+                     fig_pie = px.pie(vaccine_distribution, values='Count', names='H1N1 Vaccine',
+                                          width=450,height=450,
+                                          title='H1N1 Vaccine Distribution',hole=0.5)
+                     st.plotly_chart(fig_pie)
+       with c2:
+              with st.container(border=True):
+                     #Gender Distribution
+                     gender_distribution = data['sex'].value_counts().reset_index()
+                     fig_pie = px.pie(gender_distribution, values='count', names='sex',
+                                      width=450,height=450,
+                                      title='Gender Distribution',hole=0.5)
+                     st.plotly_chart(fig_pie)
 
-     :red[Use the tabs above to navigate through different sections of the project.]
+       with st.container(border=True):
+              st.subheader(":red[Age Based Analysis]")
+              age_filter=st.selectbox("Select the Age Bracket",data['age_bracket'].unique(),key="age",index=2)
+              age_df=data[data['age_bracket']==age_filter]
 
-    """)
+              c3,c4=st.columns([3.8,4.2])
+              with c3:
+                     # H1N1 Awareness Distribution
+                     h1n1_awareness_distribution = age_df['h1n1_awareness'].value_counts().reset_index()
+                     h1n1_awareness_distribution.columns = ['Awareness Level', 'Count']
 
-with tab2:
+                     h1n1_awareness_distribution['Vaccine'] = h1n1_awareness_distribution['Awareness Level'].apply(lambda x: "\n".join(f"{vaccine}: {count}" for vaccine, count in age_df[age_df['h1n1_awareness'] == x]['h1n1_vaccine'].value_counts().items()))
+                     
+                     fig_bar_aw = px.bar(h1n1_awareness_distribution, y='Count', x='Awareness Level',
+                                   hover_data={'Count', 'Awareness Level', 'Vaccine'},
+                                   width=450,
+                                   color='Count',color_continuous_scale=px.colors.sequential.Redor_r,
+                                   title='H1N1 Awareness Distribution')
+                     st.plotly_chart(fig_bar_aw)
+              with c4:
+                     # H1N1 Risky (respondent think)
+                     h1n1_risky_distribution = age_df['is_h1n1_risky'].value_counts().reset_index()
+                     h1n1_risky_distribution.columns = ['Respondent Think', 'Count']
+
+                     h1n1_risky_distribution['Vaccine'] = h1n1_risky_distribution['Respondent Think'].apply(lambda x: "\n".join(f"{vaccine}: {count}" for vaccine, count in age_df[age_df['h1n1_awareness'] == x]['h1n1_vaccine'].value_counts().items()))
+                     
+                     fig_bar_risk = px.bar(h1n1_risky_distribution, x='Count', y='Respondent Think',
+                                   hover_data={'Count', 'Respondent Think', 'Vaccine'},
+                                   orientation='h',width=500,
+                                   color='Count',color_continuous_scale=px.colors.sequential.Redor_r,
+                                   title='H1N1 Risky Distribution')
+                     st.plotly_chart(fig_bar_risk)
+
+       
+       n_data=data.copy()
+       n_data['Contact Avoidance']=n_data['contact_avoidance'].replace({0:"No",1:"Yes"})
+       n_data['Wash Hands Frequently']=n_data['wash_hands_frequently'].replace({0:"No",1:"Yes"})
+       n_data['Avoid Large Gatherings']=n_data['avoid_large_gatherings'].replace({0:"No",1:"Yes"})
+       n_data['Avoid Touch Face']=n_data['avoid_touch_face'].replace({0:"No",1:"Yes"})
+       n_data['Reduced Outside Home Contact']=n_data['reduced_outside_home_cont'].replace({0:"No",1:"Yes"})
+
+       be_analysis=['Contact Avoidance','Wash Hands Frequently','Avoid Large Gatherings','Avoid Touch Face','Reduced Outside Home Contact']
+       st.subheader(":red[Behavioural Analysis]")
+       option=st.selectbox("Select the Option",be_analysis)
+       def distribution(option):
+              #Distribution
+              distribution = n_data[option].value_counts().reset_index()
+              fig_pie = px.pie(distribution, values='count', names=option,
+                                   width=450,height=450,
+                                   title=f'{option}',hole=0.5)
+              st.plotly_chart(fig_pie)
+       distribution(option)
+
+with tab3:
        c1,c2=st.columns(2)
        with c1:
               h1n1_worry=st.selectbox("H1n1 Worry",df['h1n1_worry'].unique(),key="h1n1_worry")
@@ -89,7 +152,3 @@ if submit:
           st.write("Not Vaccinated")
        elif prediction ==1:
           st.write("Vaccinated")
-
-
-
-
