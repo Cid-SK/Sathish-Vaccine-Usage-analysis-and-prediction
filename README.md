@@ -1,7 +1,7 @@
-**Project Title:** Vaccine Usage Analysis and Prediction
+# Vaccine Usage Analysis and Prediction
 
 **Description:**
-This project focuses on predicting the likelihood of individuals taking an H1N1 flu vaccine using logistic regression. It involves analyzing a dataset containing various features related to individuals' behaviors, perceptions, and demographics, and building a predictive model to determine vaccine acceptance. The aim is to help healthcare professionals and policymakers target vaccination campaigns more effectively.
+This project focuses on predicting the likelihood of individuals taking an H1N1 flu vaccine using Random Forest. It involves analyzing a dataset containing various features related to individuals' behaviors, perceptions, and demographics, and building a predictive model to determine vaccine acceptance. The aim is to help healthcare professionals and policymakers target vaccination campaigns more effectively.
 
 **Skills Takeaway From This Project:**
 - Python scripting
@@ -62,36 +62,14 @@ The dataset contains the following columns:
 - Develop a Plotly or Streamlit analytical dashboard with at least 5 types of dynamic charts and at least 3 data filtering options.
 
 **Task 3: Model Development**
-- Train a logistic regression model (or any suitable model) for prediction.
+- Train a  suitable model for prediction.
 - Perform model tuning and evaluation to improve predictive performance.
 - Develop a predictive model to target vaccination campaigns effectively.
 - Create a model serving API once the model is ready.
 - Develop an application using Flask, Plotly, or Streamlit that can accept features as input and provide predictions to the end user.
 - Host the application using any free hosting service provider.
 
-**Project Evaluation Metrics:**
-- Write code in a modular fashion (in functional blocks).
-- Maintainability: Ensure the code can be maintained, even as the codebase grows.
-- Portability: Ensure the code works the same in every environment (operating system).
-- Maintain your code on GitHub (public repository).
-- Include a proper README file for project development, including basic workflow and execution of the entire project.
-- Follow Python coding standards (PEP 8).
 
-**Readme File for GitHub:**
-1. Overview: Briefly describe the project's objective, dataset, and tasks.
-2. Data Engineering: Explain how the dataset was processed and any engineering steps taken.
-3. Exploratory Data Analysis: Discuss insights gained from analyzing the dataset.
-4. Dashboard Development: Describe the development of the analytical dashboard, including chart types and filtering options.
-5. Model Development: Explain the process of training, tuning, and evaluating the predictive model. Mention the choice of algorithm used.
-6. Model Serving API: Outline the steps to create and deploy the model serving API.
-7. Application Development: Explain how the application was developed using Flask, Plotly, or Streamlit, and how it accepts input and provides predictions.
-8. Hosting: Describe how the application was hosted using a free hosting service provider.
-9. Evaluation Metrics: Discuss how the project adheres to coding standards, maintainability, and portability.
+**GitHub Repository Link:** [https://github.com/Cid-SK/Sathish-Vaccine-Usage-analysis-and-prediction.git]
 
-**GitHub Repository Link:** [Link to your GitHub repository]
 
-**Demo Video:** [Link to the demo video posted on LinkedIn]
-
-**References:** [Include any references or resources used during the project development]
-
-This README file provides a comprehensive overview of the project, its development process, and evaluation metrics. It serves as a guide for anyone interested in understanding and replicating the project.
