@@ -3,7 +3,7 @@ import pandas as pd
 import pickle
 import plotly.express as px
 
-df=pd.read_csv("G:\\SK\\Ds\\vaccine\\en_vaccine.csv")
+df=pd.read_csv("G:\\SK\\Ds\\vaccine\\encoded_vaccine.csv")
 
 #streamlit part
 st.set_page_config(page_title="Vaccine Prediction",layout="wide")
@@ -13,7 +13,24 @@ st.markdown("<style>div.block-container{padding-top:1rem;}</style>",unsafe_allow
 tab1,tab2,tab3=st.tabs(["***Home***","***Analysis***","***Prediction***"])
 
 with tab1:
-       pass
+       st.subheader(":blue[***Welcome to the Vaccine Usage Analysis and Prediction project homepage!***]")
+
+       st.write('''This project aims to predict the likelihood of people taking an H1N1 flu vaccine 
+                using machine learning techniques and provide valuable insights for healthcare
+                professionals and policymakers.''')
+       
+       st.write("""
+
+    ### :blue[***Project Tasks:***]
+                
+    - **Data Engineering**: Understand and preprocess the dataset.
+    - **Dashboard Development**: Create interactive visualizations.
+    - **Model Development**: Train a predictive model.
+    - **Model Serving API**: Develop an application for prediction.
+
+     :red[Use the tabs above to navigate through different sections of the project.]
+
+    """)
        
 with tab2:     
        data_df=pd.read_csv("G:\\SK\\Ds\\vaccine\\vaccine.csv")
@@ -149,6 +166,6 @@ if submit:
                      no_of_children]])
        
        if prediction == 0:
-          st.write("Not Vaccinated")
+          st.warning("Not Vaccinated")
        elif prediction ==1:
-          st.write("Vaccinated")
+          st.success("Vaccinated")
