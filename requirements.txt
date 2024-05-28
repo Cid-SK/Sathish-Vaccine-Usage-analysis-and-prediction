@@ -2,5 +2,4 @@ pandas
 streamlit ==1.34.0
 plotly.express
 scikit-learn==1.2.2
-pickle
 gunicorn
