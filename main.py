@@ -153,19 +153,19 @@ with tab3:
 
        submit=st.button("***:blue[Submit]***")
 
-with open('G:\\SK\\Ds\\vaccine\\vaccine_prediction.pkl', 'rb') as file:   
-   model = pickle.load(file)
-
-if submit:
-       prediction=model.predict([[h1n1_worry,h1n1_awareness,antiviral_medication,contact_avoidance,bought_face_mask,
-                     wash_hands_frequently,avoid_large_gatherings,reduced_outside_home_cont,avoid_touch_face,
-                     dr_recc_h1n1_vacc,dr_recc_seasonal_vacc,chronic_medic_condition,cont_child_undr_6_mnths,
-                     is_health_worker,is_h1n1_vacc_effective,is_h1n1_risky,sick_from_h1n1_vacc,
-                     is_seas_vacc_effective,is_seas_risky,sick_from_seas_vacc,age_bracket,qualification,
-                     race,sex,income_level,marital_status,housing_status,employment,census_msa,no_of_adults,
-                     no_of_children]])
+       with open('G:\\SK\\Ds\\vaccine\\vaccine_prediction.pkl', 'rb') as file:   
+          model = pickle.load(file)
        
-       if prediction == 0:
-          st.warning("Not Vaccinated")
-       elif prediction ==1:
-          st.success("Vaccinated")
+       if submit:
+              prediction=model.predict([[h1n1_worry,h1n1_awareness,antiviral_medication,contact_avoidance,bought_face_mask,
+                            wash_hands_frequently,avoid_large_gatherings,reduced_outside_home_cont,avoid_touch_face,
+                            dr_recc_h1n1_vacc,dr_recc_seasonal_vacc,chronic_medic_condition,cont_child_undr_6_mnths,
+                            is_health_worker,is_h1n1_vacc_effective,is_h1n1_risky,sick_from_h1n1_vacc,
+                            is_seas_vacc_effective,is_seas_risky,sick_from_seas_vacc,age_bracket,qualification,
+                            race,sex,income_level,marital_status,housing_status,employment,census_msa,no_of_adults,
+                            no_of_children]])
+              
+              if prediction == 0:
+                 st.warning("Not Vaccinated")
+              elif prediction ==1:
+                 st.success("Vaccinated")
