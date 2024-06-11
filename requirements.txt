@@ -1,5 +1,4 @@
 pandas
-streamlit ==1.34.0
-plotly.express
+streamlit==1.34.0
+plotly
 scikit-learn==1.2.2
-gunicorn
