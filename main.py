@@ -3,7 +3,7 @@ import pandas as pd
 import pickle
 import plotly.express as px
 
-df=pd.read_csv("G:\\SK\\Ds\\vaccine\\encoded_vaccine.csv")
+df=pd.read_csv("vaccine.csv")
 
 #streamlit part
 st.set_page_config(page_title="Vaccine Prediction",layout="wide")
@@ -33,7 +33,7 @@ with tab1:
     """)
        
 with tab2:     
-       data_df=pd.read_csv("G:\\SK\\Ds\\vaccine\\vaccine.csv")
+       data_df=pd.read_csv("vaccine.csv")
        data=data_df.copy()
 
        data['h1n1_awareness'] = data['h1n1_awareness'].replace({0:"No knowledge",1:"little knowledge",2:"good knowledge"})
