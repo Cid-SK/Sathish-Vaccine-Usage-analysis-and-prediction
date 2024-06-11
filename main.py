@@ -153,7 +153,7 @@ with tab3:
 
        submit=st.button("***:blue[Submit]***")
 
-       with open('G:\\SK\\Ds\\vaccine\\vaccine_prediction.pkl', 'rb') as file:   
+       with open('vaccine_prediction_LR.pkl', 'rb') as file:   
           model = pickle.load(file)
        
        if submit:
