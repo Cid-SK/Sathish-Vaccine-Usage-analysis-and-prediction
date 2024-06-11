@@ -33,8 +33,8 @@ with tab1:
     """)
        
 with tab2:     
-       data_df=pd.read_csv("vaccine.csv")
-       data=data_df.copy()
+       data_1=pd.read_csv("vaccine.csv")
+       data=data_1.copy()
 
        data['h1n1_awareness'] = data['h1n1_awareness'].replace({0:"No knowledge",1:"little knowledge",2:"good knowledge"})
        data['h1n1_vaccine'] = data['h1n1_vaccine'].replace({0:"Not Vaccinated",1:"Vaccinated"})
