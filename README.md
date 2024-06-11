@@ -62,14 +62,19 @@ The dataset contains the following columns:
 - Develop a Plotly or Streamlit analytical dashboard with at least 5 types of dynamic charts and at least 3 data filtering options.
 
 **Task 3: Model Development**
-- Train a  suitable model for prediction.
+- Train a suitable model for prediction.
 - Perform model tuning and evaluation to improve predictive performance.
 - Develop a predictive model to target vaccination campaigns effectively.
 - Create a model serving API once the model is ready.
 - Develop an application using Flask, Plotly, or Streamlit that can accept features as input and provide predictions to the end user.
 - Host the application using any free hosting service provider.
 
+**Deployed Dashboard:**
+You can access the deployed dashboard [here](https://vaccine-usage-analysis-and-prediction-6utp.onrender.com).
 
-**GitHub Repository Link:** [https://github.com/Cid-SK/Sathish-Vaccine-Usage-analysis-and-prediction.git]
+**GitHub Repository Link:**
+[https://github.com/Cid-SK/Sathish-Vaccine-Usage-analysis-and-prediction.git]
 
+---
 
+Replace `https://your-render-link.com` with the actual URL of your deployed dashboard on Render.
