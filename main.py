@@ -3,7 +3,7 @@ import pandas as pd
 import pickle
 import plotly.express as px
 
-df=pd.read_csv("vaccine.csv")
+df=pd.read_csv("encoded_vaccine.csv")
 
 #streamlit part
 st.set_page_config(page_title="Vaccine Prediction",layout="wide")
