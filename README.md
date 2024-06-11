@@ -73,8 +73,6 @@ The dataset contains the following columns:
 You can access the deployed dashboard [here](https://vaccine-usage-analysis-and-prediction-6utp.onrender.com).
 
 **GitHub Repository Link:**
-[https://github.com/Cid-SK/Sathish-Vaccine-Usage-analysis-and-prediction.git]
+[here](https://github.com/Cid-SK/Sathish-Vaccine-Usage-analysis-and-prediction.git)
 
 ---
-
-Replace `https://your-render-link.com` with the actual URL of your deployed dashboard on Render.
